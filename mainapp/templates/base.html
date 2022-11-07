@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sticky Footer Navbar Template · Bootstrap v5.2</title>
+
+  <link href="../static/css/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet">
+
+  <script src="../static/js/bootstrap.bundle.min.js" async defer></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+
+    <main class="flex-shrink-0">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-8">
+                    {% block main %}
+                    {% endblock %}
+                </div>
+
+                <div class="col-4">
+                    {% include 'sidebar.html' %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    {% for question in questions %}
+        <div class="question">
+          <div class="row">
+            <div class="col-1 disable-caret">
+{#              <div class="avatar">#}
+{#                <img src="../static/img/defaul_avatar.jpg" alt="" />#}
+{#              </div>#}
+
+              <div class="d-flex flex-column mt-2 align-items-center">
+
+                      <button class="rate-button" onclick="console.log('up')">
+                          <object type="image/svg+xml" data="../static/img/upvote.svg" class="rate-arrow-up">
+
+                          </object>
+                      </button>
+
+                      <div class="fs-2 score-count">3</div>
+
+                      <button class="rate-button" onclick="console.log('down')">
+                          <object type="image/svg+xml" data="../static/img/upvote.svg" class="rate-arrow-down">
+
+                          </object>
+                      </button>
+
+                </div>
+
+            </div>
+            <div class="col-10">
+              <h2 class="question-title"><a href="#">Question {{ question }}</a></h2>
+              <div class="question-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ea, expedita hic magnam officia qui
+                quod sed soluta suscipit vitae.
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+{% endblock %}

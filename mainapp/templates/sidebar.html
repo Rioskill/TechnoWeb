@@ -3,22 +3,32 @@
     <h2>Popular Tags</h2>
   </div>
 
-  <div class="row">
-    <div class="col-4 fs-3 red">smth</div>
-    <div class="col-4 fs-4">smth</div>
-    <div class="col-4 fs-3">smth</div>
-  </div>
+   {% for row in tags %}
+     <div class="row">
+      {% for tag in row %}
+        <div class="col-4 fs-3">
+          <a href="/hot/{{ tag }}">{{ tag }}</a>
+        </div>
+      {% endfor %}
+     </div>
+   {% endfor %}
 
-  <div class="row">
-    <div class="col-6 fs-3">smth</div>
-    <div class="col-4 fs-2">smth</div>
-  </div>
-
-  <div class="row">
-    <div class="col-4 fs-3">smth</div>
-    <div class="col-4 fs-2 yellow">smth</div>
-    <div class="col-4 fs-2">smth</div>
-  </div>
+{#  <div class="row">#}
+{#    <div class="col-4 fs-3 red">smth</div>#}
+{#    <div class="col-4 fs-4">smth</div>#}
+{#    <div class="col-4 fs-3">smth</div>#}
+{#  </div>#}
+{##}
+{#  <div class="row">#}
+{#    <div class="col-6 fs-3">smth</div>#}
+{#    <div class="col-4 fs-2">smth</div>#}
+{#  </div>#}
+{##}
+{#  <div class="row">#}
+{#    <div class="col-4 fs-3">smth</div>#}
+{#    <div class="col-4 fs-2 yellow">smth</div>#}
+{#    <div class="col-4 fs-2">smth</div>#}
+{#  </div>#}
 </div>
 
 
@@ -27,16 +37,24 @@
     <h2>Best Members</h2>
   </div>
 
-  <div class="row">
+{#  <div class="row">#}
+{#    <a href="#">Member 1</a>#}
+{#  </div>#}
+{#  <div class="row">#}
+{#    <a href="#">Member 2</a>#}
+{#  </div>#}
+{#  <div class="row">#}
+{#    <a href="#">Member 3</a>#}
+{#  </div>#}
+{#  <div class="row">#}
+{#    <a href="#">Member 4</a>#}
+{#  </div>#}
+
+  <div class="d-flex flex-column text-center">
     <a href="#">Member 1</a>
-  </div>
-  <div class="row">
     <a href="#">Member 2</a>
-  </div>
-  <div class="row">
     <a href="#">Member 3</a>
-  </div>
-  <div class="row">
     <a href="#">Member 4</a>
+
   </div>
 </div>

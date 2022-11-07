@@ -1,18 +1,31 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 
-# Create your views here.
+from mainapp.models import QUESTIONS, ANSWERS, TAGS
 
 
-def index(request):
+def index(request, page=1):
+
+    p = Paginator(QUESTIONS, 7)
 
     context = {
-        'questions': [
-            1, 2, 3
-        ]
+        'questions': p.page(page),
+        'pages': list(p.page_range),
     }
 
     return render(request, 'index.html', context)
 
 
-def question(request):
-    return render(request, 'question.html', {})
+# def tag(request, tag):
+
+
+def question(request, question_id):
+
+    question_data = QUESTIONS[question_id]
+
+    context = {
+        'question': question_data,
+        'answers': ANSWERS,
+    }
+
+    return render(request, 'question.html', context)

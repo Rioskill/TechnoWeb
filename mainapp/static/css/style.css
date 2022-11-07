@@ -2,11 +2,27 @@
     padding: 60px 15px 0;
 }
 
-.question {
+.question_card {
     margin-bottom: 20px;
     border: 2px solid gray;
     border-radius: 6px;
     padding: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.bordered {
+    border: 2px solid gray;
+    border-radius: 10%;
+}
+
+.avatar-container {
+    display: flex;
+    width: 12.5%;
+    justify-content: center;
 }
 
 .avatar {
@@ -51,8 +67,6 @@
     border: none;
 
     display: flex;
-
-    /*user-select: none;*/
 }
 
 .rate-button:hover * {

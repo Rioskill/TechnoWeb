@@ -21,5 +21,7 @@ from mainapp.views import index, question
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('question', question)
+    path('index/<int:page>', index),
+
+    path('question/<int:question_id>', question),
 ]

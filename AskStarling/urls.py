@@ -19,11 +19,10 @@ from django.urls import path
 from mainapp.views import index, question, tag, ask, settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index),
-    path('index/<int:page>', index),
-    path('tag/<str:tag>', tag),
-    path('question/<int:question_id>', question),
-    path('ask', ask),
-    path('settings', settings)
+    path('', index, name='index'),
+    path('index/<int:page>', index, name='index-page'),
+    path('tag/<str:tag>', tag, name='tag'),
+    path('question/<int:question_id>', question, name='question'),
+    path('ask', ask, name='ask'),
+    path('settings', settings, name='settings')
 ]

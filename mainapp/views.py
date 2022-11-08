@@ -31,7 +31,7 @@ def tag(request, tag):
 
 def question(request, question_id):
 
-    question_data = QUESTIONS[question_id]
+    question_data = QUESTIONS[question_id - 1]
 
     context = {
         'question': question_data,

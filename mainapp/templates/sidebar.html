@@ -7,7 +7,7 @@
      <div class="row">
       {% for tag in row %}
         <div class="col-4 fs-3">
-          <a href="/tag/{{ tag }}">{{ tag }}</a>
+          <a href="{% url 'tag' tag %}">{{ tag }}</a>
         </div>
       {% endfor %}
      </div>

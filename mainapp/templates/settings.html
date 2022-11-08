@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <h1>Settings</h1>
+
+  <form class="m-4">
+     <div class="row mb-4 align-items-center">
+      <div class="col-2">
+        <label for="login-input" class="form-label">Login</label>
+      </div>
+      <div class="col-10">
+        <input type="text" class="form-control settings-input" id="login-input">
+      </div>
+    </div>
+
+     <div class="row mb-4 align-items-center">
+      <div class="col-2">
+        <label for="email-input" class="form-label">Email</label>
+      </div>
+      <div class="col-10">
+        <input type="email" class="form-control settings-input" id="email-input">
+      </div>
+    </div>
+
+    <div class="row mb-4 align-items-center">
+      <div class="col-2">
+        <label for="nickname-input" class="form-label">Nickname</label>
+      </div>
+      <div class="col-10">
+        <input type="text" class="form-control settings-input" id="nickname-input">
+      </div>
+    </div>
+
+    <div class="row mb-4 align-items-center">
+      <div class="col-2">
+        <label for="avatar-input" class="form-label">Avatar</label>
+      </div>
+      <div class="col-10">
+        <input type="file" class="form-control" id="avatar-input">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-success">Save</button>
+  </form>
+{% endblock %}

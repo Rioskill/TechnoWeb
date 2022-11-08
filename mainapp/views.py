@@ -42,5 +42,8 @@ def question(request, question_id):
 
 
 def ask(request):
-
     return render(request, 'ask.html', {})
+
+
+def settings(request):
+    return render(request, 'settings.html', {})

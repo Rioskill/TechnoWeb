@@ -98,3 +98,7 @@
 .disable-caret {
     user-select: none;
 }
+
+.settings-input {
+    max-width: 300px;
+}

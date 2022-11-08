@@ -39,3 +39,8 @@ def question(request, question_id):
     }
 
     return render(request, 'question.html', context)
+
+
+def ask(request):
+
+    return render(request, 'ask.html', {})

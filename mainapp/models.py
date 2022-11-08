@@ -23,7 +23,7 @@ QUESTIONS = [
 
 ANSWERS = [
     {
-        'text': f'answers text{i}',
+        'text': f'answer text{i}',
         'id': i
     }
 

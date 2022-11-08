@@ -16,7 +16,17 @@ def index(request, page=1):
     return render(request, 'index.html', context)
 
 
-# def tag(request, tag):
+def tag(request, tag):
+    questions = list(filter(lambda q: tag in q['tags'], QUESTIONS))
+
+    p = Paginator(questions, 7)
+
+    context = {
+        'questions': questions,
+        'pages': list(p.page_range)
+    }
+
+    return render(request, 'index.html', context)
 
 
 def question(request, question_id):

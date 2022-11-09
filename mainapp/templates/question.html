@@ -3,57 +3,7 @@
 {% load static %}
 
 {% block main %}
-  <div class="question">
-    <div class="row">
-      <div class="col-1 disable-caret d-flex align-items-center">
-        <div class="d-flex flex-column align-items-center">
-
-          <button class="rate-button" onclick="console.log('up')">
-            <object type="image/svg+xml" data="{% static 'img/rate-arrow.svg' %}" class="rate-arrow-up">
-
-            </object>
-          </button>
-
-          <div class="fs-2 score-count">3</div>
-
-          <button class="rate-button" onclick="console.log('down')">
-            <object type="image/svg+xml" data="{% static 'img/rate-arrow.svg' %}" class="rate-arrow-down">
-
-            </object>
-          </button>
-        </div>
-
-      </div>
-      <div class="col-2 avatar-container">
-        <div class="d-flex flex-column" style="justify-content: center; align-items: center">
-          <div class="avatar">
-            <img src="{% static 'img/defaul_avatar.jpg' %}" alt="" />
-          </div>
-          <div>
-            username
-          </div>
-        </div>
-
-      </div>
-      <div class="col-9">
-        <h2 class="question-title">{{ question.title }}</h2>
-        <div class="question-text">
-          {{ question.text }}
-        </div>
-        <div class="d-flex justify-content-around">
-          <a href="#">answer (3)</a>
-
-          <div>
-            Tags:
-
-            {% for tag in question.tags %}
-              <a href="#">{{ tag }}</a>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'question-card.html' %}
 
   {% for answer in answers %}
     <div class="question_card">

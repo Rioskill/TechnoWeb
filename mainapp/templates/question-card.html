@@ -1,0 +1,25 @@
+{% extends 'card.html' %}
+
+{% block rating %}
+  {{ question.rating }}
+{% endblock %}
+
+{% block card_contents %}
+  <div class="col-9">
+    <h2 class="question-title">{{ question.title }}</h2>
+    <div class="question-text">
+      {{ question.text }}
+    </div>
+    <div class="d-flex justify-content-around">
+      <a href="{% url 'question' question.id %}">answers ({{ question.answer_cnt }})</a>
+
+      <div>
+        Tags:
+
+        {% for tag in question.tags %}
+          <a href="{% url 'tag' tag%}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

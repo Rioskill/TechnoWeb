@@ -36,8 +36,8 @@
         {% else %}
 
           <div class="d-flex">
-            <a class="ms-1 me-1" href="#">log in</a>
-            <a class="ms-1 me-1" href="#">register</a>
+            <a class="ms-1 me-1" href="{% url 'login' %}">log in</a>
+            <a class="ms-1 me-1" href="{% url 'register' %}">register</a>
           </div>
 
         {% endif %}

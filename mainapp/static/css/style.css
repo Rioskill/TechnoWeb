@@ -101,3 +101,12 @@
 .settings-input {
     max-width: 300px;
 }
+
+.answer-footer-container {
+    position: relative;
+}
+
+.answer-footer {
+    position: absolute;
+    bottom: 0;
+}

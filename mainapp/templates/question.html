@@ -5,49 +5,18 @@
 {% block main %}
   {% include 'question-card.html' %}
 
+  <hr>
+
   {% for answer in answers %}
-    <div class="question_card">
-      <div class="row">
-        <div class="col-1 disable-caret">
-          <div class="d-flex flex-column align-items-center">
-
-            <button class="rate-button" onclick="console.log('up')">
-              <object type="image/svg+xml" data="{% static 'img/rate-arrow.svg' %}" class="rate-arrow-up">
-
-              </object>
-            </button>
-
-            <div class="fs-2 score-count">3</div>
-
-            <button class="rate-button" onclick="console.log('down')">
-              <object type="image/svg+xml" data="{% static 'img/rate-arrow.svg' %}" class="rate-arrow-down">
-
-              </object>
-            </button>
-          </div>
-
-        </div>
-        <div class="col-2 avatar-container">
-          <div class="d-flex flex-column" style="justify-content: center; align-items: center">
-            <div class="avatar">
-              <img src="{% static 'img/defaul_avatar.jpg' %}" alt="" />
-            </div>
-            <div>
-              username
-            </div>
-          </div>
-
-        </div>
-        <div class="col-9">
-          <div class="question-text">
-            {{ answer.text }}
-          </div>
-          <div class="d-flex justify-content-around">
-            Correct!
-          </div>
-        </div>
-      </div>
-    </div>
+    {% include 'answer-card.html' %}
   {% endfor %}
+
+  <hr>
+
+  <form>
+    <label for="answer-input" class="form-label">Enter your answer</label>
+    <textarea type="text" class="form-control mb-2" id="answer-input" rows="5"></textarea>
+    <button type="submit" class="btn btn-outline-success">Publish your answer</button>
+  </form>
 
 {% endblock %}

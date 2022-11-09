@@ -1,0 +1,19 @@
+{% extends 'card.html' %}
+
+{% block rating %}
+  {{ answer.rating }}
+{% endblock %}
+
+{% block card_contents %}
+  <div class="col-9 answer-footer-container">
+    <div class="question-text">
+      {{ answer.text }}
+    </div>
+    <div class="answer-footer">
+      <div class="form-group col-3 d-flex align-items-center">
+        <input id="correct-2" class="me-3 form-check form-check-input form-check-inline" type="checkbox">
+        <label class="form-check-label" for="correct-2">Correct!</label>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -26,7 +26,8 @@ ANSWERS = [
     {
         'question_id': random.randint(0, 30),
         'text': f'answer text{i}',
-        'id': i
+        'id': i,
+        'rating': random.randint(-5, 100)
     }
 
     for i in range(1, 100)

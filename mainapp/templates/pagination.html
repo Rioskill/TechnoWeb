@@ -1,0 +1,21 @@
+{% load mainapp_extras %}
+
+<ul class="pagination">
+  {% if current_page > 1 %}
+    <li class="page-item"><a class="page-link" href="{{ list_url|add_prev_page_number:current_page }}">Previous</a></li>
+  {% endif %}
+
+  {% for page in pages %}
+    {% if page != '…' %}
+        <li class="page-item"><a class="page-link" href="{{ list_url|add_page_number:page }}">{{ page }}</a></li>
+
+    {% else %}
+      <li class="page-item"><a class="page-link">{{ page }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+
+  {% if current_page != pages|last %}
+    <li class="page-item"><a class="page-link" href="{{ list_url|add_next_page_number:current_page }}">Next</a></li>
+  {% endif %}
+</ul>

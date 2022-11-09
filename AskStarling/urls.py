@@ -16,17 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from mainapp.views import index, question, tag, ask, settings, login, register
+from mainapp.views import index, question, tag, ask, settings, login, register, hot
 
 urlpatterns = [
     path('', index, name='index'),
     path('index/<int:page>', index, name='index-page'),
-    path('tag/<str:tag>', tag, name='tag'),
+    path('tag/<str:tag>/', tag, name='tag'),
     path('tag/<str:tag>/<int:page>', tag, name='tag-page'),
+    path('hot/', hot, name='hot'),
+    path('hot/<int:page>', hot, name='hot-page'),
     path('question/<int:question_id>', question, name='question'),
     path('ask', ask, name='ask'),
     path('settings', settings, name='settings'),
 
     path('login', login, name='login'),
-    path('register', register, name='register')
+    path('signup', register, name='register')
 ]

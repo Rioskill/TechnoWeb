@@ -2,10 +2,6 @@
 
 {% block heading %}
   <div>
-    <h1>New questions</h1>
+    <h1>New questions <a href="{% url 'hot' %}">Hot questions</a></h1>
   </div>
-{% endblock %}
-
-{% block pagination %}
-  {% include 'pagination.html' with list_url="/index" %}
 {% endblock %}

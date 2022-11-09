@@ -41,6 +41,21 @@ def index(request, page=1):
     return render(request, 'index.html', context)
 
 
+def hot(request, page=1):
+    sorted_questions = list(sorted(QUESTIONS, key=lambda x: x['rating'], reverse=True))
+    paginated_questions, pages = paginate(sorted_questions, page)
+    questions = add_answers_cnt_to_questions(paginated_questions)
+
+    context = {
+        'list_url': '/hot',
+        'questions': questions,
+        'pages': pages,
+        'current_page': page
+    }
+
+    return render(request, 'hot.html', context)
+
+
 def tag(request, tag, page=1):
     questions = list(filter(lambda q: tag in q['tags'], QUESTIONS))
 
@@ -86,4 +101,3 @@ def login(request):
 
 def register(request):
     return render(request, 'register.html', {})
-

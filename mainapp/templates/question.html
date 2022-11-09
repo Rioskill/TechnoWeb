@@ -8,7 +8,9 @@
   <hr>
 
   {% for answer in answers %}
-    {% include 'answer-card.html' %}
+    <div class="question_card">
+      {% include 'answer-card.html' %}
+    </div>
   {% endfor %}
 
   <hr>

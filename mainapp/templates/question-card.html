@@ -11,7 +11,9 @@
       {{ question.text }}
     </div>
     <div class="d-flex justify-content-around">
-      <a href="{% url 'question' question.id %}">answers ({{ question.answer_cnt }})</a>
+
+      {% block question_footer %}
+      {% endblock %}
 
       <div>
         Tags:

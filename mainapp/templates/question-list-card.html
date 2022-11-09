@@ -1,0 +1,5 @@
+{% extends 'question-card.html' %}
+
+{% block question_footer %}
+  <a href="{% url 'question' question.id %}">answers ({{ question.answer_cnt }})</a>
+{% endblock %}

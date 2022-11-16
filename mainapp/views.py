@@ -1,35 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, Http404
 from django.core.paginator import Paginator
 
-from mainapp.models import QUESTIONS, ANSWERS, TAGS
+from mainapp.models import *
 
 
 def paginate(object_list, page, per_page=7):
+    if page < 0 or page >= len(object_list):
+        page = 1
+
     p = Paginator(object_list, per_page)
-    return p.page(page), list(p.get_elided_page_range(page, on_each_side=2, on_ends=1))
-
-
-def get_answers(question):
-    if type(question) == int:
-        question_id = question
-    else:
-        question_id = question['id']
-    return list(filter(lambda answer: answer['question_id'] == question_id, ANSWERS))
-
-
-def add_answers_cnt_to_questions(questions):
-    res_questions = list()
-
-    for question in questions:
-        res_questions.append(question)
-        res_questions[-1]['answer_cnt'] = len(get_answers(question))
-
-    return res_questions
+    return p.get_page(page), list(p.get_elided_page_range(page, on_each_side=2, on_ends=1))
 
 
 def index(request, page=1):
-    paginated_questions, pages = paginate(QUESTIONS, page)
-    questions = add_answers_cnt_to_questions(paginated_questions)
+    questions, pages = paginate(list(Question.objects.all()), page)
 
     context = {
         'list_url': '/index',
@@ -42,13 +26,13 @@ def index(request, page=1):
 
 
 def hot(request, page=1):
-    sorted_questions = list(sorted(QUESTIONS, key=lambda x: x['rating'], reverse=True))
+    sorted_questions = Question.objects.in_rating_order()
+
     paginated_questions, pages = paginate(sorted_questions, page)
-    questions = add_answers_cnt_to_questions(paginated_questions)
 
     context = {
         'list_url': '/hot',
-        'questions': questions,
+        'questions': paginated_questions,
         'pages': pages,
         'current_page': page
     }
@@ -57,15 +41,14 @@ def hot(request, page=1):
 
 
 def tag(request, tag, page=1):
-    questions = list(filter(lambda q: tag in q['tags'], QUESTIONS))
+    questions = Question.objects.with_tag(tag)
 
     paginated_questions, pages = paginate(questions, page)
-    questions = add_answers_cnt_to_questions(paginated_questions)
 
     context = {
         'tag': tag,
         'list_url': f'/tag/{tag}',
-        'questions': questions,
+        'questions': paginated_questions,
         'pages': pages,
         'current_page': page
     }
@@ -73,15 +56,19 @@ def tag(request, tag, page=1):
     return render(request, 'tag.html', context)
 
 
-def question(request, question_id):
+def question(request, question_id, page=1):
+    question = Question.objects.get(id=question_id)
+    answers = Answer.objects.for_question(question)
 
-    question_data = QUESTIONS[question_id - 1]
-    answers_data = get_answers(question_id)
+    paginated_answers, pages = paginate(answers, page)
 
     context = {
-        'question': question_data,
-        'answers': answers_data,
-        'answers_cnt': len(answers_data)
+        'question': question,
+        'answers': paginated_answers,
+        'answers_cnt': answers.count(),
+        'pages': pages,
+        'current_page': page,
+        'list_url': f'/question/{question_id}'
     }
 
     return render(request, 'question.html', context)
@@ -101,3 +88,8 @@ def login(request):
 
 def register(request):
     return render(request, 'register.html', {})
+
+
+def page_not_found_view(request, exception):
+    return Http404()
+

@@ -4,6 +4,10 @@
   {{ answer.rating }}
 {% endblock %}
 
+{% block username %}
+  {{ answer.author.username }}
+{% endblock %}
+
 {% block card_contents %}
   <div class="col-9 answer-footer-container">
     <div class="question-text">

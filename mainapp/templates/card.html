@@ -27,10 +27,12 @@
     <div class="col-2 avatar-container">
       <div class="d-flex flex-column" style="justify-content: center; align-items: center">
         <div class="avatar">
-          <img src="{% static 'img/default_avatar.jpg' %}" alt="" />
+          <img src="{% static 'img/avatars/default_avatar.jpg' %}" alt="" />
         </div>
         <div>
-          username
+          {% block username %}
+            username
+          {% endblock %}
         </div>
       </div>
 

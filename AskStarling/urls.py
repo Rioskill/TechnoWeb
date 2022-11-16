@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from mainapp.views import index, question, tag, ask, settings, login, register, hot
+from mainapp.views import page_not_found_view
 
 urlpatterns = [
     path('', index, name='index'),
@@ -26,9 +27,13 @@ urlpatterns = [
     path('hot/', hot, name='hot'),
     path('hot/<int:page>', hot, name='hot-page'),
     path('question/<int:question_id>', question, name='question'),
+    path('question/<int:question_id>/<int:page>', question, name='question-page'),
     path('ask', ask, name='ask'),
     path('settings', settings, name='settings'),
 
     path('login', login, name='login'),
     path('signup', register, name='register')
 ]
+
+
+handler404 = page_not_found_view
